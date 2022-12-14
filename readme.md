@@ -11,3 +11,11 @@
 ```
     npm i dotenv
 ```
+## install ejs for html page render
+```
+    app.set("view engine","ejs")
+```
+
+```
+   npm i ejs
+```
