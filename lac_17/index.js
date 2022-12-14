@@ -73,7 +73,7 @@ app
     res.send('multiple rote method on a single page ,delete');
   });
 
-// ! ejs file render on cilent side
+// ! ejs file render on client side
 
 app.get('/employee', (req, res) => {
   res.render("pages/employee");
