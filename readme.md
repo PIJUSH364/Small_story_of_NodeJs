@@ -19,3 +19,10 @@
 ```
    npm i ejs
 ```
+## types of middleWare
+
+    1)application level middleware
+    2)router level middleware
+    3)error-handling  middleware
+    4)built-in middleware
+    5)third-party middleware
