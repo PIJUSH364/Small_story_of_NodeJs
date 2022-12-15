@@ -76,8 +76,15 @@ app
 // ! ejs file render on client side
 
 app.get('/employee', (req, res) => {
-  res.render("pages/employee");
+  // ? render method take two argument 1st is path,2nd is any thing pass as a object (this is also optional)
+  res.render('pages/employee', {
+    country: 'INDIA',
+  });
+
+  // ? check header send status
+   console.log(res.headersSent);// return true or false
 });
+
 app.get('/handle', handle);
 
 app.listen(5000, () => {
