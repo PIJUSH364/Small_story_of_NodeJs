@@ -4,6 +4,8 @@ const todoSchema = require('../schemas/todoSchema');
 const router = express.Router();
 const Todo = new mongoose.model('Todo', todoSchema);
 
+
+// active todo with async await
 router.get('/active', async (req, res) => {
   const todo = new Todo();
   try {
@@ -19,6 +21,44 @@ router.get('/active', async (req, res) => {
   }
 });
 
+// active todo with callBack
+router.get('/active_callback', (req, res) => {
+  const todo = new Todo();
+  todo.findActiveCallback((err,data)=>{
+    if (err) {
+        res.status(500).json({
+          error: 'There was a server side error!',
+        });
+    } else {
+      res.status(200).json({
+        result: data,
+        message: 'all active todos!',
+      });
+    } 
+
+  });
+
+});
+
+// js tile todo find
+router.get('/js',async (req, res) => {
+  const data =await Todo.findByJs();
+  res.status(200).json({
+    result: data,
+    message: 'all js title todo!',
+  });
+
+});
+
+// language specific todo find
+router.get('/language',async (req, res) => {
+  const data = await Todo.find().byLanguage("react")
+  res.status(200).json({
+    result: data,
+    message: 'all language title todo!',
+  });
+
+});
 
 // get all the TODO
 // router.get('/', async (req, res) => {
