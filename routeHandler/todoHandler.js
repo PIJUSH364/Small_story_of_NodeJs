@@ -4,6 +4,22 @@ const todoSchema = require('../schemas/todoSchema');
 const router = express.Router();
 const Todo = new mongoose.model('Todo', todoSchema);
 
+router.get('/active', async (req, res) => {
+  const todo = new Todo();
+  try {
+    const data = await todo.findActive();
+    res.status(200).json({
+      result: data,
+      message: 'all active todos!',
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: 'There was a server side error!',
+    });
+  }
+});
+
+
 // get all the TODO
 // router.get('/', async (req, res) => {
 //   Todo.find({ status: 'active' }, (err, data) => {
